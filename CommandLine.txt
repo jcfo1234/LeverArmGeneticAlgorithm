@@ -1,0 +1,1 @@
+python TestLeverArm.py -r "C:\Users\jfandino\Desktop\test\ECLIPSE\LeverArmProj\TestNoLeverArm.txt" -l "C:\Users\jfandino\Desktop\test\ECLIPSE\LeverArmProj\TestLeverArm.txt" -t "C:\Users\jfandino\Desktop\test\ECLIPSE\LeverArmProj\CTL_RTCMV3.GPS" -g "C:\Users\jfandino\Desktop\test\ECLIPSE\LeverArmProj\CTL_RTCMV3.txt" -p 10 -x 0 -y 0 -z 0 -a SOL_COMPUTED -b NARROW_INT -c BESTPOS
