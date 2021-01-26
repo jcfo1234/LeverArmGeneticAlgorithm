@@ -1,1 +1,1 @@
-from FileParser import MyPositionFileParser
+from .FileParser import MyPositionFileParser

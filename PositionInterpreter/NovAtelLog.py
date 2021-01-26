@@ -459,7 +459,7 @@ class MyNCRC32():
     '''
     Class that Computes the CRC32 checksum of a binary array
     '''
-    CRC32_POLYNOMIAL = 0xEDB88320L
+    CRC32_POLYNOMIAL = 0xEDB88320
     def __init__(self):
         self._ulCRC32 = 0
         
@@ -483,7 +483,7 @@ class MyNCRC32():
         '''
         i = 0
         while (ulCOUNT != 0):
-            ulTemp1 = (self._ulCRC32 >> 8) & 0x00FFFFFFL
+            ulTemp1 = (self._ulCRC32 >> 8) & 0x00FFFFFF
             ulTemp2 = self.CRC32Value((self._ulCRC32 ^ int(ucBUFFER[i].encode('hex'),16)) & 0xFF)
             self._ulCRC32 = ulTemp1 ^ ulTemp2
             i = i + 1

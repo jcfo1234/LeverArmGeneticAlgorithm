@@ -1,2 +1,2 @@
-from LevArmEncoder import MyLevArmEncoder
-from LevArmEncoderDecoderClass import MyLevArmEncoderDecoderClass 
+from .LevArmEncoder import MyLevArmEncoder
+from .LevArmEncoderDecoderClass import MyLevArmEncoderDecoderClass

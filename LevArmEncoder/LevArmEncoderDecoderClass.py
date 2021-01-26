@@ -81,4 +81,3 @@ class MyLevArmEncoderDecoderClass(object):
         elif (ordinate_ == 2):
             self._levz = dValue
         self._SetBinaryEncodedLeverArm()
-        

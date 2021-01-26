@@ -1,3 +1,3 @@
-from NovAtelLog import MyNPosition
+from .NovAtelLog import MyNPosition
 # from NovAtelLog import MyNHeader
-from NovAtelLog import MyNCRC32
+from .NovAtelLog import MyNCRC32

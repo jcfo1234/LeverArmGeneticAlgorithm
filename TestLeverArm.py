@@ -41,11 +41,11 @@ def ParseArguments(argv):
     try:
         opts, args = getopt.getopt(argv, "hr:l:t:g:p:x:y:z:a:b:c:",["reffile=","levfile=","gnssbinfile=","gnssoutfile=","popsize=","levx=","levy=","levz=","solstatus=","postype=","poslog="])
     except getopt.GetoptError:
-        print 'TestLeverArm.py \n-r <Reference Trajectory file full path(In)> \n-l <Lever arm trajectory file full path (Out)> \n-t <UUT trajectory binary file (In)> \n-g <UUT trajectory file (Out)> \n-p <Population size> \n-x <Lever arm x> \n-y <Lever arm y> \n-z <Lever arm z> \n-a <Expected Solution Status> \n-b <Expected position type> \n-c <Expected position log>'
+        print('TestLeverArm.py \n-r <Reference Trajectory file full path(In)> \n-l <Lever arm trajectory file full path (Out)> \n-t <UUT trajectory binary file (In)> \n-g <UUT trajectory file (Out)> \n-p <Population size> \n-x <Lever arm x> \n-y <Lever arm y> \n-z <Lever arm z> \n-a <Expected Solution Status> \n-b <Expected position type> \n-c <Expected position log>')
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-            print 'TestLeverArm.py \n-r <Reference Trajectory file full path(In)> \n-l <Lever arm trajectory file full path (Out)> \n-t <UUT trajectory binary file (In)> \n-g <UUT trajectory file (Out)> \n-p <Population size> \n-x <Lever arm x> \n-y <Lever arm y> \n-z <Lever arm z> \n-a <Expected Solution Status> \n-b <Expected position type> \n-c <Expected position log>'
+            print('TestLeverArm.py \n-r <Reference Trajectory file full path(In)> \n-l <Lever arm trajectory file full path (Out)> \n-t <UUT trajectory binary file (In)> \n-g <UUT trajectory file (Out)> \n-p <Population size> \n-x <Lever arm x> \n-y <Lever arm y> \n-z <Lever arm z> \n-a <Expected Solution Status> \n-b <Expected position type> \n-c <Expected position log>')
             sys.exit()
         elif opt in ("-r", "--reffile"):
             szRefTrajFullPath = arg
@@ -128,6 +128,6 @@ if __name__ == '__main__':
     
     # Pick the fittest element in the last generation
     FittestLeverArm = aclGAPopulationThread[GAOperations.GAGetFittestByFitness(aclGAPopulationThread)].GetLevArmTrajObject().GetLeverArmBodyFrame()
-    print 'Lever Arm is: [{:.3f},{:.3f},{:.3f}]'.format(FittestLeverArm[0], FittestLeverArm[1], FittestLeverArm[2])
-    print 'Average and StdDev Fitness is: {:.3f}, {:.3f}'.format(dFitnessAvg, dFitnessStdDev)
+    print('Lever Arm is: [{:.3f},{:.3f},{:.3f}]'.format(FittestLeverArm[0], FittestLeverArm[1], FittestLeverArm[2]))
+    print('Average and StdDev Fitness is: {:.3f}, {:.3f}'.format(dFitnessAvg, dFitnessStdDev))
     pass

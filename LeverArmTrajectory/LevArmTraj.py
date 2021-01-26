@@ -249,7 +249,7 @@ class MyLevArmTraj(object):
         using the lever arm vector
         '''
         starttime = dt.datetime.utcnow()
-        print "Thread: " + ThreadName_ + " File creation start time: " + str(starttime)
+        print("Thread: " + ThreadName_ + " File creation start time: " + str(starttime))
         self._InputFile = open(self._szFullInputFileName, "r")
         self._OutputFile = open(self._szFullOutputFileName, "w")
         self._OutputFile.write('Week,GPSTime,Latitude,Longitude,H-Ell,Q,SDNorth,SDEast,SDHeigth,VEast,VNorth,VUp,SD-VE,SD-VN,SD-VH,COG,Cx11,Cx22,Cx33,Cx21,Cx31,Cx32,N-RMS,E-RMS,H-RMS\n')
@@ -272,7 +272,7 @@ class MyLevArmTraj(object):
             self._AppendLineToFile(line, [dGNSSLatitude, dGNSSLongitude, dGNSSHeight])
         # Report the elapsed time consumed by the Thread
         elapsedtime = (dt.datetime.utcnow() - starttime).total_seconds()
-        print "Thread: " + ThreadName_ + " File creation elapsed time: {:.3f}".format(elapsedtime)
+        print("Thread: " + ThreadName_ + " File creation elapsed time: {:.3f}".format(elapsedtime))
         self._InputFile.close()
         self._OutputFile.close()
             

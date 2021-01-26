@@ -1,1 +1,1 @@
-from LevArmThread import myThreadProcess
+from .LevArmThread import myThreadProcess

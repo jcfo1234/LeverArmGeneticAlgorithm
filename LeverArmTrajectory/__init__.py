@@ -1,2 +1,2 @@
-from LevArmTraj import MyLevArmTraj
-import CoordFrames
+from .LevArmTraj import MyLevArmTraj
+from LeverArmTrajectory import CoordFrames

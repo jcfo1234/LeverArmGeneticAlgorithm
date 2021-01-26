@@ -119,7 +119,7 @@ class MyPositionFileParser(object):
         LogBuffer = []
         # Read data from Input Binary File
         try:
-            print 'Percentage file read is: '
+            print('Percentage file read is: ')
             bytes_read = True
             while bytes_read:
                 # Tell current status of file read

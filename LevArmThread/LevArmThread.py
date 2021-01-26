@@ -6,7 +6,7 @@ Created on Mar 3, 2015
 import multiprocessing
 import math
 import datetime as dt
-from itertools import izip
+# from itertools import izip
 from itertools import chain
 from decimal import Decimal
 from LeverArmTrajectory import MyLevArmTraj
@@ -56,7 +56,7 @@ class myThreadProcess (multiprocessing.Process):
         '''
         # Report Start time of reading process
         starttime = dt.datetime.utcnow()
-        print "Thread: " + self._ProcessName + " File read process start time: " + str(starttime)
+        print("Thread: " + self._ProcessName + " File read process start time: " + str(starttime))
         
         self._INSInputFile = open(self._INSFileName, "r")
         self._GNSSInputFile = open(self._GNSSFileName, "r")
@@ -70,7 +70,7 @@ class myThreadProcess (multiprocessing.Process):
         dyRMSsqr = Decimal(0)
         dzRMSsqr = Decimal(0)
         # Processing file
-        for line1, line2, line3 in izip(self._INSInputFile, self._GNSSInputFile, self._CONInputFile):
+        for line1, line2, line3 in zip(self._INSInputFile, self._GNSSInputFile, self._CONInputFile):
             # Read INS File until finding a numeric value
             while (line1.split(',')[0].replace('.','',1).isdigit() == False):
                 line1 = self._INSInputFile.next()
@@ -134,7 +134,7 @@ class myThreadProcess (multiprocessing.Process):
         self._GNSSInputFile.close()
         # Report elapsed time from reading process
         elapsedtime = (dt.datetime.utcnow() - starttime).total_seconds()
-        print "Thread: " + self._ProcessName + " File read process elapsed time: {:.3f}".format(elapsedtime)
+        print("Thread: " + self._ProcessName + " File read process elapsed time: {:.3f}".format(elapsedtime))
         
         return [dLatRMSsqr, dLngRMSsqr, dHgtRMSsqr, dxRMSsqr, dyRMSsqr, dzRMSsqr]
     
