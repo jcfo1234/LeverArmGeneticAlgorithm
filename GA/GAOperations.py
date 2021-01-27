@@ -398,7 +398,7 @@ def TestGAChromosomes(aclGAPopulationProcess_, Queue_):
                 # [Process ID, Fitness]
                 TempInfo = Queue_.get()
                 # Modify dictionary
-                if (FITNESS_DICT.has_key(TempInfo[0]) == False):
+                if (TempInfo[0] not in FITNESS_DICT):
                     FITNESS_DICT[TempInfo[0]] = TempInfo[1]
         # Finish when all threads created are finished
         if (len(FITNESS_DICT) == len(aclGAMyPopulationProcess)):
