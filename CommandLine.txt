@@ -1,1 +1,22 @@
-python TestLeverArm.py -r "C:\Users\jfandino\Desktop\test\ECLIPSE\LeverArmProj\TestNoLeverArm.txt" -l "C:\Users\jfandino\Desktop\test\ECLIPSE\LeverArmProj\TestLeverArm.txt" -t "C:\Users\jfandino\Desktop\test\ECLIPSE\LeverArmProj\CTL_RTCMV3.GPS" -g "C:\Users\jfandino\Desktop\test\ECLIPSE\LeverArmProj\CTL_RTCMV3.txt" -p 10 -x 0 -y 0 -z 0 -a SOL_COMPUTED -b NARROW_INT -c BESTPOS
+Program finds the lever arm between an inertial measurement unit (IMU) and a GNSS antenna under the following assumptions:
+1. The IMU and the GNSS antenna devices are mounted on a rigid body
+2. The position trajectory of the IMU device is known beforehand
+3. The position trajectory of the GNSS antenna device is known beforehand with RTK position quality
+4. GNSS trajectory file is in NovAtel binary format (see docs.novatel.com)
+5. IMU trajectory file is csv formatted following Inertial Explorer file format.
+
+Arguments:
+-r or --reffile: IMU trajectory file
+-l or --levfile: IMU trajectory file shifted by a lever arm output
+-t or --gnssbinfile: Binary GNSS antenna trajectory file (see docs.novatel.com)
+-g or --gnssoutfile: Comma separated GNSS antenna trajectory file output
+-p or --popsize: Genetic Algorithm population size
+-x or --levx: Initial body frame coordinates lever arm x
+-y or --levy: Initial body frame coordinates lever arm y
+-z or --levz: Initial body frame coordinates lever arm z
+-a or --solstatus: BESTPOS solution status log from NovAtel receiver (see docs.novatel.com)
+-b or --postype: BESTPOS position status log from NovAtel receiver (see docs.novatel.com)
+-c or --poslog: Read a log from the Binary GNSS antenna file (e.g. BESTPOS)
+
+e.g. 
+python TestLeverArm.py -r "C:\JuanFolder\MASTERS\ENGO623\Seminar\Example1\TestNoLeverArm.txt" -l "C:\JuanFolder\MASTERS\ENGO623\Seminar\Example1\TestLeverArm.txt" -t "C:\JuanFolder\MASTERS\ENGO623\Seminar\Example1\UUT_HSPA_RTCMV3.GPS" -g "C:\JuanFolder\MASTERS\ENGO623\Seminar\Example1\UUT_HSPA_RTCMV3.txt" -p 10 -x 0 -y 0 -z 0 -a SOL_COMPUTED -b NARROW_INT -c BESTPOS

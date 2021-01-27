@@ -34,7 +34,7 @@ class MyPositionFileParser(object):
         '''
         Synch Bytes Comparison
         '''
-        szSynch = binascii.hexlify(bytearray(BinaryArray))
+        szSynch = binascii.hexlify(bytearray(BinaryArray)).decode('utf-8')
         # Compare UPPERCASE Strings
         if (szSynch.upper() == SynchString.upper()):
             return True
@@ -46,15 +46,15 @@ class MyPositionFileParser(object):
         Transforms 4 Bytes into unsigned short
         BinaryArray must be of length 4
         '''
-        return (int(BinaryArray[3].encode('hex'),16) << 24) | (int(BinaryArray[2].encode('hex'),16) << 16) | (int(BinaryArray[1].encode('hex'),16) << 8) | int(BinaryArray[0].encode('hex'),16)
+        return (BinaryArray[3] << 24) | (BinaryArray[2] << 16) | (BinaryArray[1] << 8) | BinaryArray[0]
 
     def _AssembleUSHORT(self, BinaryArray):
         '''
         Transforms 2 Bytes into unsigned short
         BinaryArray must be of length 2
         '''
-        return (int(BinaryArray[1].encode('hex'),16) << 8) | int(BinaryArray[0].encode('hex'),16)
-    
+        return (BinaryArray[1] << 8) | BinaryArray[0]
+
     def _IsPositionLog(self, BinaryArray_, PositionLogKey_):
         '''
         Determines if the Message ID corresponds to a position Log
@@ -198,4 +198,4 @@ class MyPositionFileParser(object):
         finally:
             self._InputFile.close()
             self._OutputFile.close()
-            
+

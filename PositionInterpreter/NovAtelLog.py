@@ -43,7 +43,7 @@ class MyNHeader(object):
         '''
         i = 0
         for Bytes in params:
-            self._headbuff[i] = int(Bytes.encode('hex'),16)
+            self._headbuff[i] = Bytes
             i = i+1
         self._SetusMsgID()
         self._SetcmsgType()
@@ -239,7 +239,7 @@ class MyNPosition(MyNHeader):
         self.SetHeadBuff(params[0:MyNHeader.HEADER_BUFFER_SIZE])
         i = 0
         for Bytes in params[self.HEADER_BUFFER_SIZE:]:
-            self._posbuff[i] = int(Bytes.encode('hex'),16)
+            self._posbuff[i] = Bytes
             i = i + 1
         self._SetePositionStatus()
         self._SetePositionType()
@@ -287,7 +287,7 @@ class MyNPosition(MyNHeader):
         '''
         Sets Log position latitude
         '''
-        self._dMyLatitude = struct.unpack('!d', binascii.hexlify(bytearray(reversed(self._posbuff[8:16]))).decode('hex'))[0]
+        self._dMyLatitude = struct.unpack('!d', bytearray(reversed(self._posbuff[8:16])))[0]
         
     def GetdLatitude(self):
         return self._dMyLatitude
@@ -296,7 +296,7 @@ class MyNPosition(MyNHeader):
         '''
         Sets Log position longitude
         '''
-        self._dMyLongitude = struct.unpack('!d', binascii.hexlify(bytearray(reversed(self._posbuff[16:24]))).decode('hex'))[0]
+        self._dMyLongitude = struct.unpack('!d', bytearray(reversed(self._posbuff[16:24])))[0]
         
     def GetdLongitude(self):
         return self._dMyLongitude
@@ -305,7 +305,7 @@ class MyNPosition(MyNHeader):
         '''
         Sets Log position Height
         '''
-        self._dMyHeight = struct.unpack('!d', binascii.hexlify(bytearray(reversed(self._posbuff[24:32]))).decode('hex'))[0]
+        self._dMyHeight = struct.unpack('!d', bytearray(reversed(self._posbuff[24:32])))[0]
         
     def GetdHeight(self):
         return self._dMyHeight
@@ -314,7 +314,7 @@ class MyNPosition(MyNHeader):
         '''
         Sets Log position Undulation
         '''
-        self._fMyUndulation = struct.unpack('!f', binascii.hexlify(bytearray(reversed(self._posbuff[32:36]))).decode('hex'))[0]
+        self._fMyUndulation = struct.unpack('!f', bytearray(reversed(self._posbuff[32:36])))[0]
         
     def GetfUndulation(self):
         return self._fMyUndulation
@@ -333,7 +333,7 @@ class MyNPosition(MyNHeader):
         '''
         Sets Log position latitude standard deviation
         '''
-        self._fMyLatStdDev = struct.unpack('!f', binascii.hexlify(bytearray(reversed(self._posbuff[40:44]))).decode('hex'))[0]
+        self._fMyLatStdDev = struct.unpack('!f', bytearray(reversed(self._posbuff[40:44])))[0]
         
     def GetfLatStdDev(self):
         return self._fMyLatStdDev
@@ -342,7 +342,7 @@ class MyNPosition(MyNHeader):
         '''
         Sets Log position longitude standard deviation
         '''
-        self._fMyLongStdDev = struct.unpack('!f', binascii.hexlify(bytearray(reversed(self._posbuff[44:48]))).decode('hex'))[0]
+        self._fMyLongStdDev = struct.unpack('!f', bytearray(reversed(self._posbuff[44:48])))[0]
         
     def GetfLongStdDev(self):
         return self._fMyLongStdDev
@@ -351,7 +351,7 @@ class MyNPosition(MyNHeader):
         '''
         Sets Log position Height standard deviation
         '''
-        self._fMyHgtStdDev = struct.unpack('!f', binascii.hexlify(bytearray(reversed(self._posbuff[48:52]))).decode('hex'))[0]
+        self._fMyHgtStdDev = struct.unpack('!f', bytearray(reversed(self._posbuff[48:52])))[0]
         
     def GetfHgtStdDev(self):
         return self._fMyHgtStdDev
@@ -369,7 +369,7 @@ class MyNPosition(MyNHeader):
         '''
         Sets Log position differential lag
         '''
-        self._fMyDifferentialLag = struct.unpack('!f', binascii.hexlify(bytearray(reversed(self._posbuff[56:60]))).decode('hex'))[0]
+        self._fMyDifferentialLag = struct.unpack('!f', bytearray(reversed(self._posbuff[56:60])))[0]
         
     def GetfDifferentialLag(self):
         return self._fMyDifferentialLag
@@ -378,7 +378,7 @@ class MyNPosition(MyNHeader):
         '''
         Sets Log position solution age
         '''
-        self._fMySolutionAge = struct.unpack('!f', binascii.hexlify(bytearray(reversed(self._posbuff[60:64]))).decode('hex'))[0]
+        self._fMySolutionAge = struct.unpack('!f', bytearray(reversed(self._posbuff[60:64])))[0]
         
     def GetfSolutionAge(self):
         return self._fMySolutionAge
@@ -484,7 +484,7 @@ class MyNCRC32():
         i = 0
         while (ulCOUNT != 0):
             ulTemp1 = (self._ulCRC32 >> 8) & 0x00FFFFFF
-            ulTemp2 = self.CRC32Value((self._ulCRC32 ^ int(ucBUFFER[i].encode('hex'),16)) & 0xFF)
+            ulTemp2 = self.CRC32Value((self._ulCRC32 ^ ucBUFFER[i]) & 0xFF)
             self._ulCRC32 = ulTemp1 ^ ulTemp2
             i = i + 1
             ulCOUNT = ulCOUNT - 1
